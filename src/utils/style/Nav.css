@@ -1,0 +1,145 @@
+nav {
+    width: 100%;
+    margin: 0;
+}
+
+.hamburger {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    z-index: 10;
+    position: fixed;
+    top: 20px;
+}
+
+.hamburger.open {
+    position: fixed;
+}
+
+.burger {
+    width: 2rem;
+    height: .25rem;
+    border-radius: 10px;
+    background-color: rgb(90, 111, 8);
+    transform-origin: 1px;
+    transition: all .3s linear;
+}
+
+.hamburger .burger1 {
+    transform: rotate(0);
+}
+
+.hamburger.open .burger1 {
+    transform: rotate(45deg);
+}
+
+.hamburger .burger2 {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.hamburger.open .burger2 {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.hamburger .burger3 {
+    transform: rotate(0);
+}
+
+.hamburger.open .burger3 {
+    transform: rotate(-45deg);
+}
+
+.navigation {
+    position: absolute;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all .3s linear;
+}
+
+.navigation.open {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all .3s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    padding: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    background-color: rgba(255,255,255,.8);
+}
+
+.navigation a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    transition: all .3s ease-in-out;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+
+.navigation a:hover, .navigation a.active {
+    color: rgb(109, 133, 9);
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(147, 173, 24);
+    transform-origin: bottom right;
+    transition: transform .3s ease-in-out;
+}
+
+.navigation a.active::after {
+    transform: scaleX(1);
+}
+
+/* For devices with width between 769px and 1279px, like landscape tablets and laptops */
+@media only screen and (min-width: 769px) {
+    .navigation.open {
+        padding: 100px;
+    }
+} 
+
+/* For devices with width of 1280px and more, like desktop computers */
+@media only screen and (min-width: 1280px) {
+    nav {
+        width: 20%;
+        margin: 0;
+    }
+    .hamburger {
+        display: none;
+    }
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        transform: translateX(0);
+        opacity: 1;
+    }
+    .navigation a {
+        margin: 0;
+    }
+    .navigation a:hover {
+        transition: all .3s ease-in-out;
+    }
+    .navigation a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}

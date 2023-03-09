@@ -1,0 +1,13 @@
+.MuiTableCell-root.MuiTableCell-head.MuiTableCell-alignLeft.MuiTableCell-sizeMedium.css-1vovnli-MuiTableCell-root {
+    max-width: 150px;
+    min-width: fit-content;
+}
+
+/* For devices with width of 1280px and more, like desktop computers */
+@media only screen and (min-width: 1280px) {
+    .MuiTableCell-root.MuiTableCell-head.MuiTableCell-alignLeft.MuiTableCell-sizeMedium.css-1vovnli-MuiTableCell-root {
+        min-width: max(calc(var(--col-firstName-size) * 1px), 40px);
+    }
+}
+
+

@@ -1,0 +1,49 @@
+header, .logo-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    padding: 20px;
+    padding-bottom: 0;
+    background-color: rgba(90, 111, 8, .25);
+}
+
+.logo-title img {
+    width: 150px;
+}
+
+.logo-title h1 {
+    margin: 0;
+    margin-bottom: 20px;
+    color: rgb(109, 133, 9);
+    font-size: 1.5em;
+}
+
+/* For devices with width between 769px and 1279px, like landscape tablets and laptops */
+@media only screen and (min-width: 769px) {
+    header {
+        padding: 20px 50px;
+    }
+    .logo-title img {
+        width: 200px;
+    }
+    .logo-title h1 {
+        font-size: 2em;
+    }
+} 
+
+/* For devices with width of 1280px and more, like desktop computers */
+@media only screen and (min-width: 1280px) {
+    header, .logo-title {
+        flex-direction: row;
+    }
+    header {
+        justify-content: space-between;
+        padding: 20px 100px;
+    }
+    .logo-title img {
+        width: 100px;
+    }
+}

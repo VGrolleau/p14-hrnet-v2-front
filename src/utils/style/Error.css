@@ -1,0 +1,66 @@
+.section-error {
+    padding: 20px;
+    text-align: center;
+}
+
+.section-error p {
+    margin: 20px;
+    font-size: .8em;
+}
+
+.section-error a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    font-size: .8em;
+    transition: all .3s ease-in-out;
+    width: fit-content;
+    margin: 0;
+}
+
+.section-error a:hover {
+    color: rgb(109, 133, 9);
+}
+
+.section-error a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(147, 173, 24);
+    transform-origin: bottom right;
+    transition: transform .3s ease-in-out;
+}
+
+/* For devices with width between 769px and 1279px, like landscape tablets and laptops */
+@media only screen and (min-width: 769px) {
+    .section-error {
+        padding: 30px 50px;
+    }
+    .section-error p {
+        margin: 50px;
+        font-size: 1em;
+    }
+    .section-error a {
+        font-size: 1em;
+    }
+} 
+
+/* For devices with width of 1280px and more, like desktop computers */
+@media only screen and (min-width: 1280px) {
+    .section-error {
+        padding: 50px 100px;
+    }
+    .section-error a:hover {
+        transition: all .3s ease-in-out;
+    }
+    .section-error a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
