@@ -1,10 +1,9 @@
 import { DropdownMenu } from "dropdown-menu-component";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Input from "../components/Input";
 import Modal from "../components/Modal";
 import { dataForm, states, departments } from "../data";
-import { createEmployee } from "../redux";
+import { postEmployee } from "../services/APIService";
 import '../utils/style/CreateEmployee.css';
 
 function CreateEmployee() {
@@ -20,8 +19,6 @@ function CreateEmployee() {
     const [department, setDepartment] = useState('');
     const [modal, setModal] = useState(false);
     const [errors, setErrors] = useState({});
-
-    let dispatch = useDispatch();
 
     const textModal = "Employee created!";
 
@@ -51,21 +48,6 @@ function CreateEmployee() {
     const toggleModal = () => {
         setModal(!modal);
     };
-
-    const employeesSelector = useSelector((state) => state.employee.employees);
-
-    let newEmployees = [...employeesSelector];
-    newEmployees.push({
-        firstName: firstName,
-        lastName: lastName,
-        dateOfBirth: dateOfBirth,
-        startDate: startDate,
-        street: street,
-        city: city,
-        state: state,
-        zipCode: zipCode,
-        department: department
-    });
 
     const errorMessages = {
         firstName: {
@@ -111,12 +93,13 @@ function CreateEmployee() {
      * The u option at the end of the regex indicates that the regular expression uses Unicode characters.
      * \-' : Corresponds to hyphens, apostrophes.
      */
-    const regexText = /^[\p{L}\-']+$/u;
+    const regexText = /^[\p{L}\-' ]+$/u;
 
     /**
      * [\w] : Corresponds to an alphanumeric character (letter or number). The \w is a shortcut for [a-zA-Z0-9_]
      */
     const regexStreet = /^[\w]+/;
+    const regexCity = /^[a-zA-Z]+(?:[\s-'.&/][a-zA-Z]+)*(?:[.|\s])?(?:[(a-z)])*$/;
     const regexZip = /^\d{1,5}$/;
 
     const validateInput = (value, regex, errorMessage) => {
@@ -168,7 +151,7 @@ function CreateEmployee() {
                 break;
 
             case "city":
-                setErrorFunction(newValue, null, "city", `Please ${errorMessages.city.verb} employee ${errorMessages.city.name}`, regexText, setCity);
+                setErrorFunction(newValue, null, "city", `Please ${errorMessages.city.verb} employee ${errorMessages.city.name}`, regexCity, setCity);
                 break;
 
             case "zip-code":
@@ -180,7 +163,7 @@ function CreateEmployee() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formErrors = {};
@@ -188,8 +171,8 @@ function CreateEmployee() {
         formErrors["last-name"] = validateInput(lastName, regexText, `Please ${errorMessages.lastName.verb} employee ${errorMessages.lastName.name}`);
         formErrors["date-of-birth"] = validateInput(dateOfBirth, null, `Please ${errorMessages.dateOfBirth.verb} employee ${errorMessages.dateOfBirth.name}`);
         formErrors["start-date"] = validateInput(startDate, null, `Please ${errorMessages.startDate.verb} employee ${errorMessages.startDate.name}`);
-        formErrors["street"] = validateInput(street, regexText, `Please ${errorMessages.street.verb} employee ${errorMessages.street.name}`);
-        formErrors["city"] = validateInput(city, regexText, `Please ${errorMessages.city.verb} employee ${errorMessages.city.name}`);
+        formErrors["street"] = validateInput(street, regexStreet, `Please ${errorMessages.street.verb} employee ${errorMessages.street.name}`);
+        formErrors["city"] = validateInput(city, regexCity, `Please ${errorMessages.city.verb} employee ${errorMessages.city.name}`);
         formErrors["state"] = validateInput(state, null, `Please ${errorMessages.state.verb} employee ${errorMessages.state.name}`);
         formErrors["zip-code"] = validateInput(zipCode, regexZip, `Please ${errorMessages.zipCode.verb} employee ${errorMessages.zipCode.name}`);
         formErrors["department"] = validateInput(department, null, `Please ${errorMessages.department.verb} employee ${errorMessages.department.name}`);
@@ -200,7 +183,8 @@ function CreateEmployee() {
             return;
         }
 
-        dispatch(createEmployee(newEmployees));
+        await postEmployee(firstName, lastName, dateOfBirth, startDate, street, city, state, zipCode, department);
+
         toggleModal();
     };
 
