@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from '../components/Header';
+import SignIn from './SignIn';
 import CreateEmployee from './CreateEmployee';
 import EmployeeList from './EmployeeList';
 import Error from './Error';
@@ -10,7 +11,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route index element={<CreateEmployee />} />
+          <Route index element={<SignIn />} />
+          <Route path="/create-employee" element={<CreateEmployee />} />
           <Route path="/employee-list" element={<EmployeeList />} />
           <Route path="*" element={<Error />} />
         </Routes>

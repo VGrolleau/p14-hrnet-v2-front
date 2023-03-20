@@ -17,7 +17,7 @@ function Nav() {
                 <div className="burger burger3"></div>
             </div>
             <div className={hamburgerOpen ? 'navigation open' : 'navigation'}>
-                <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>Create employee</NavLink>
+                <NavLink to="/create-employee" className={({ isActive }) => (isActive ? "active" : "")}>Create employee</NavLink>
                 <NavLink to="/employee-list" className={({ isActive }) => (isActive ? "active" : "")}>View current employees</NavLink>
             </div>
         </nav>

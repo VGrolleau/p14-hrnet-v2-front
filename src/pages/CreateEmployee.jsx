@@ -4,6 +4,7 @@ import Input from "../components/Input";
 import Modal from "../components/Modal";
 import { dataForm, states, departments } from "../data";
 import { postEmployee } from "../services/APIService";
+import { regexCity, regexStreet, regexText, regexZip } from "../utils/global/globalRegex";
 import '../utils/style/CreateEmployee.css';
 
 function CreateEmployee() {
@@ -87,20 +88,6 @@ function CreateEmployee() {
             name: "department"
         },
     };
-
-    /**
-     * \p{L} : Unicode character class that corresponds to all letters of all languages.
-     * The u option at the end of the regex indicates that the regular expression uses Unicode characters.
-     * \-' : Corresponds to hyphens, apostrophes.
-     */
-    const regexText = /^[\p{L}\-' ]+$/u;
-
-    /**
-     * [\w] : Corresponds to an alphanumeric character (letter or number). The \w is a shortcut for [a-zA-Z0-9_]
-     */
-    const regexStreet = /^[\w]+/;
-    const regexCity = /^[a-zA-Z]+(?:[\s-'.&/][a-zA-Z]+)*(?:[.|\s])?(?:[(a-z)])*$/;
-    const regexZip = /^\d{1,5}$/;
 
     const validateInput = (value, regex, errorMessage) => {
         if (!value) {
