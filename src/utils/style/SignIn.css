@@ -51,56 +51,16 @@
     margin: 0;
 }
 
-/* For devices with width between 769px and 1279px, like landscape tablets and laptops */
+/* For devices with width of 769px and more, from landscape tablets and laptops */
 @media only screen and (min-width: 769px) {
-} 
-
-/* For devices with width of 1280px and more, like desktop computers */
-@media only screen and (min-width: 1280px) {
     .signin-section {
-        background: linear-gradient(rgba(90, 111, 8, .25),rgba(147, 173, 24, .5));
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-    .signin-section h2 {
-        text-transform: uppercase;
-    }
-    .signin-section form {
-        margin: 0;
-    }
-    .signin-section label {
-        text-transform: capitalize;
+        padding-top: 0;
     }
     #signin-button {
         margin: 50px auto;
-        font-size: 1em;
-        padding: 5px 10px;
-        border-radius: 5px;
-        background-color: rgb(90, 111, 8);
-        color: white;
-        border: none;
-        cursor: pointer;
         font-size: 1.2em;
-        transition: all .2s ease-in-out;
-    }
-    #signin-button:hover {
-        background-color: rgb(147, 173, 24);
-        color: black;
-        transition: all .2s ease-in-out;
-    }
-    .signin-section p {
-        margin: 0;
     }
     .signin-section ul {
         margin: 10px 0 0;
-        list-style: none;
-        padding: 0;
     }
 }
