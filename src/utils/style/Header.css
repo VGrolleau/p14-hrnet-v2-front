@@ -33,7 +33,7 @@ header, .logo-title {
 
 /* For devices with width between 769px and 1279px, like landscape tablets and laptops */
 @media only screen and (min-width: 769px) {
-    header {
+    .logo-nav {
         padding: 20px 50px;
     }
     .logo-title img {
@@ -51,9 +51,9 @@ header, .logo-title {
     }
     header {
         justify-content: space-between;
-        padding: 20px 100px;
     }
     .logo-nav {
+        padding: 20px 100px;
         display: flex;
         justify-content: space-between;
         align-items: center;
