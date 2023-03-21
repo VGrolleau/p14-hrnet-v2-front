@@ -20,11 +20,13 @@ function Header() {
                     <Nav />
                 </div>
 
-                : <div className='logo-title'>
-                    <Link to="/">
-                        <img src={wealthHealthLogo} alt="Wealth Health Logo" />
-                    </Link>
-                    <h1>HRnet</h1>
+                : <div className='logo-nav disconnect'>
+                    <div className='logo-title'>
+                        <Link to="/">
+                            <img src={wealthHealthLogo} alt="Wealth Health Logo" />
+                        </Link>
+                        <h1>HRnet</h1>
+                    </div>
                 </div>
             }
         </header>
