@@ -22,7 +22,10 @@ function Nav() {
             <div className={hamburgerOpen ? 'navigation open' : 'navigation'}>
                 <NavLink to="/create-employee" className={({ isActive }) => (isActive ? "active" : "")}>Create employee</NavLink>
                 <NavLink to="/employee-list" className={({ isActive }) => (isActive ? "active" : "")}>View current employees</NavLink>
-                <NavLink to="/" onClick={() => dispatch(disconnectUser())}>Disconnect</NavLink>
+                <NavLink to="/" onClick={() => dispatch(disconnectUser())}>
+                    <i className="fa fa-sign-out"></i>
+                    Sign Out
+                </NavLink>
             </div>
         </nav>
     )

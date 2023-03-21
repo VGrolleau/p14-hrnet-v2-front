@@ -109,6 +109,10 @@ nav {
     transform: scaleX(1);
 }
 
+.fa-sign-out {
+    margin-right: 5px;
+}
+
 /* For devices with width between 769px and 1279px, like landscape tablets and laptops */
 @media only screen and (min-width: 769px) {
     .navigation.open {
