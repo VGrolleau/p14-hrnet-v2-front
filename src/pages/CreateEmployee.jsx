@@ -1,5 +1,7 @@
 import { DropdownMenu } from "dropdown-menu-component";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import Input from "../components/Input";
 import Modal from "../components/Modal";
 import { dataForm, states, departments } from "../data";
@@ -22,6 +24,15 @@ function CreateEmployee() {
     const [errors, setErrors] = useState({});
 
     const textModal = "Employee created!";
+    const selectorToken = useSelector((state) => state.user.token);
+    const selectorUserId = useSelector((state) => state.user.userId);
+    const isLogged = useSelector((state) => state.user.isLogged);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLogged) navigate("/");
+    })
 
     let dataNameBlock = [];
     let dataAddressBlock = [];
@@ -170,7 +181,7 @@ function CreateEmployee() {
             return;
         }
 
-        await postEmployee(firstName, lastName, dateOfBirth, startDate, street, city, state, zipCode, department);
+        await postEmployee(firstName, lastName, dateOfBirth, startDate, street, city, state, zipCode, department, selectorToken, selectorUserId);
 
         toggleModal();
     };

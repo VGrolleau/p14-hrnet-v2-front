@@ -43,6 +43,12 @@ header {
         justify-content: space-between;
         padding: 20px 100px;
     }
+    .logo-nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     .logo-title img {
         width: 100px;
     }

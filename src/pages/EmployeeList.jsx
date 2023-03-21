@@ -2,21 +2,29 @@ import Table from "../components/Table";
 import "../utils/style/EmployeeList.css";
 import { useEffect, useState } from "react";
 import { getEmployees } from "../services/APIService";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 function EmployeeList() {
     const [employees, setEmployees] = useState([]);
+    const selectorToken = useSelector((state) => state.user.token);
+    const isLogged = useSelector((state) => state.user.isLogged);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
+        if (!isLogged) navigate("/");
+
         const getData = async () => {
             try {
-                let actualData = await getEmployees();
+                let actualData = await getEmployees(selectorToken);
                 setEmployees(actualData.data);
             } catch (error) {
                 console.error('There was an error!', error);
             }
         }
         getData();
-    }, []);
+    }, [selectorToken, isLogged, navigate]);
 
     let columns = [];
     if (employees.length > 0) {

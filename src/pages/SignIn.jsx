@@ -3,12 +3,16 @@ import Input from "../components/Input";
 import { regexEmail } from '../utils/global/globalRegex';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { loginUser } from '../services/APIService';
+import { useDispatch } from 'react-redux';
+import { connectUser } from '../redux';
 
 function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     let dataForm = [
@@ -81,7 +85,19 @@ function SignIn() {
             return;
         }
 
-        navigate('/create-employee');
+        try {
+            const response = await loginUser(email, password);
+
+            if (response && response.token) {
+                dispatch(connectUser(response));
+                navigate('/create-employee');
+            } else {
+                setErrors((prevErrors) => ({ ...prevErrors, login: 'Invalid email or password' }));
+            }
+        } catch (error) {
+            console.log(error);
+            setErrors((prevErrors) => ({ ...prevErrors, login: 'An error occurred while logging in. Please try again later.' }));
+        }
     };
 
     return (
@@ -97,6 +113,14 @@ function SignIn() {
 
                 <button id='signin-button'>Connection</button>
             </form>
+
+            <div>
+                <p>To connect, please enter :</p>
+                <ul>
+                    <li>email : <span>admin@admin.fr</span></li>
+                    <li>password : <span>Pa$$w0rd</span></li>
+                </ul>
+            </div>
         </section>
     )
 };
