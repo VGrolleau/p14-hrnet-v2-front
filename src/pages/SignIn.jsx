@@ -90,6 +90,7 @@ function SignIn() {
 
             if (response && response.token) {
                 dispatch(connectUser(response));
+                // Cookies.set('userToken', response.token);
                 navigate('/create-employee');
             } else {
                 setErrors((prevErrors) => ({ ...prevErrors, login: 'Invalid email or password' }));

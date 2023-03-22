@@ -1,3 +1,15 @@
+export function loginUser(email, password) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    };
+    return fetchAPI("login", requestOptions);
+};
+
 export function postEmployee(firstname, lastname, dateOfBirth, startDate, street, city, state, zipCode, department, token, userId) {
     const requestOptions = {
         method: 'POST',
@@ -18,7 +30,7 @@ export function postEmployee(firstname, lastname, dateOfBirth, startDate, street
             userId: userId
         })
     };
-    return fetchAPI("employee/create", requestOptions);
+    return fetchAPI("employee", requestOptions);
 };
 
 export function getEmployees(token) {
@@ -29,23 +41,49 @@ export function getEmployees(token) {
             Authorization: `Bearer ${token}`
         }
     };
-    return fetchAPI("employee/get", requestOptions);
+    return fetchAPI("employee", requestOptions);
 };
 
-export function loginUser(email, password) {
+export function updateEmployee(employee, token) {
     const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
         body: JSON.stringify({
-            email: email,
-            password: password
+            firstname: employee.firstname,
+            lastname: employee.lastname,
+            dateOfBirth: employee.dateOfBirth,
+            startDate: employee.startDate,
+            street: employee.street,
+            city: employee.city,
+            state: employee.state,
+            zipCode: employee.zipCode,
+            department: employee.department
         })
     };
-    return fetchAPI("user/login", requestOptions);
+    return fetchAPI("employee", requestOptions);
+};
+
+export function deleteEmployee(employee, token) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            dateOfBirth: employee.dateOfBirth,
+            startDate: employee.startDate
+        })
+    };
+    return fetchAPI("employee", requestOptions);
 }
 
 async function fetchAPI(url, requestOptions) {
-    let result = await fetch(`http://localhost:3001/api/${url}`, requestOptions);
+    let result = await fetch(`http://192.168.1.12:3001/api/${url}`, requestOptions);
+    // let result = await fetch(`http://localhost:3001/api/${url}`, requestOptions);
     let actualData = await result.json();
 
     return actualData;

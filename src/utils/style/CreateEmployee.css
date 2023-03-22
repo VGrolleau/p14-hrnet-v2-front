@@ -12,7 +12,7 @@ h2 {
     text-transform: capitalize;
 }
 
-form {
+.create-employee-section form {
     width: 100%;
     margin: 20px auto;
     display: flex;
@@ -75,7 +75,7 @@ form {
     .create-employee-section {
         padding: 50px 100px;
     }
-    form {
+    .create-employee-section form {
         width: 50%;
         margin: 30px auto;
     }
