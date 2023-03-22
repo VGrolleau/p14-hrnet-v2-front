@@ -123,7 +123,7 @@ nav {
 /* For devices with width of 1280px and more, like desktop computers */
 @media only screen and (min-width: 1280px) {
     nav {
-        width: 25%;
+        width: 30%;
         margin: 0;
     }
     .hamburger {
