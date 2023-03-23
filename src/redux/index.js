@@ -5,7 +5,11 @@ const userSlice = createSlice({
     initialState: {
         isLogged: false,
         token: '',
-        userId: ''
+        userId: '',
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: ''
     },
     reducers: {
         connectUser: (state, action) => {
@@ -21,7 +25,11 @@ const userSlice = createSlice({
             state = {
                 isLogged: false,
                 token: '',
-                userId: ''
+                userId: '',
+                firstname: '',
+                lastname: '',
+                email: '',
+                password: ''
             };
             return state;
         }

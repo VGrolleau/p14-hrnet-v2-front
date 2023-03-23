@@ -1,3 +1,11 @@
+export function getUserNotCo(userId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    };
+    return fetchAPI(`user/${userId}`, requestOptions);
+};
+
 export function loginUser(email, password) {
     const requestOptions = {
         method: 'POST',
@@ -79,7 +87,18 @@ export function deleteEmployee(employee, token) {
         })
     };
     return fetchAPI("employee", requestOptions);
-}
+};
+
+export function getUser(token) {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    };
+    return fetchAPI('user', requestOptions);
+};
 
 async function fetchAPI(url, requestOptions) {
     let result = await fetch(`http://192.168.1.12:3001/api/${url}`, requestOptions);

@@ -1,9 +1,9 @@
 import '../utils/style/SignIn.css';
 import Input from "../components/Input";
 import { regexEmail } from '../utils/global/globalRegex';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { loginUser } from '../services/APIService';
+import { getUserNotCo, loginUser } from '../services/APIService';
 import { useDispatch } from 'react-redux';
 import { connectUser } from '../redux';
 
@@ -11,9 +11,22 @@ function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
+    const [userNotCo, setUserNotCo] = useState({});
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                let actualData = await getUserNotCo(1);
+                setUserNotCo(actualData.data);
+            } catch (error) {
+                console.error('There was an error!', error);
+            }
+        }
+        getData();
+    }, []);
 
     let dataForm = [
         {
@@ -90,7 +103,6 @@ function SignIn() {
 
             if (response && response.token) {
                 dispatch(connectUser(response));
-                // Cookies.set('userToken', response.token);
                 navigate('/create-employee');
             } else {
                 setErrors((prevErrors) => ({ ...prevErrors, login: 'Invalid email or password' }));
@@ -115,13 +127,17 @@ function SignIn() {
                 <button id='signin-button'>Connection</button>
             </form>
 
-            <div>
-                <p>To connect, please enter :</p>
-                <ul>
-                    <li>email : <span>admin@admin.fr</span></li>
-                    <li>password : <span>Pa$$w0rd</span></li>
-                </ul>
-            </div>
+            {Object.keys(userNotCo).length !== 0 ? (
+                <div>
+                    <p>To connect, please enter :</p>
+                    <ul>
+                        <li>email : <span>{userNotCo.email}</span></li>
+                        <li>password : <span>Pa$$w0rd</span></li>
+                    </ul>
+                </div>
+            ) : (
+                <div>Loading...</div>
+            )}
         </section>
     )
 };
