@@ -100,10 +100,29 @@ export function getUser(token) {
     return fetchAPI('user', requestOptions);
 };
 
+export function updateUser(user, token) {
+    console.log(user);
+    const requestOptions = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            password: user.password
+        })
+    };
+    return fetchAPI("user", requestOptions);
+};
+
 async function fetchAPI(url, requestOptions) {
     let result = await fetch(`http://192.168.1.12:3001/api/${url}`, requestOptions);
     // let result = await fetch(`http://localhost:3001/api/${url}`, requestOptions);
     let actualData = await result.json();
+    console.log(actualData);
 
     return actualData;
 };
