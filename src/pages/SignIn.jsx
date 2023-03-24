@@ -12,6 +12,7 @@ function SignIn() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const [userNotCo, setUserNotCo] = useState({});
+    const [showError, setShowError] = useState(false);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -94,22 +95,31 @@ function SignIn() {
 
         // check other fields for errors here
         if (Object.keys(formErrors).some((key) => formErrors[key])) {
+            setShowError(true);
             setErrors(formErrors);
             return;
         }
 
         try {
             const response = await loginUser(email, password);
+            console.log(response);
 
             if (response && response.token) {
                 dispatch(connectUser(response));
                 navigate('/create-employee');
             } else {
-                setErrors((prevErrors) => ({ ...prevErrors, login: 'Invalid email or password' }));
+                setErrors((prevErrors) => ({ ...prevErrors, login: response.message }));
+                setShowError(true);
             }
         } catch (error) {
             console.log(error);
             setErrors((prevErrors) => ({ ...prevErrors, login: 'An error occurred while logging in. Please try again later.' }));
+            setShowError(true);
+        }
+
+        // clear login error message
+        if (errors.login !== undefined && !showError) {
+            setErrors((prevErrors) => ({ ...prevErrors, login: "" }));
         }
     };
 
@@ -125,6 +135,14 @@ function SignIn() {
                 }
 
                 <button id='signin-button'>Connection</button>
+
+                {showError ? (
+                    <p>
+                        {errors.login}
+                    </p>
+                ) : (
+                    <p></p>
+                )}
             </form>
 
             {Object.keys(userNotCo).length !== 0 ? (
