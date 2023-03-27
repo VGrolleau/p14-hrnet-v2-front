@@ -101,7 +101,6 @@ export function getUser(token) {
 };
 
 export function updateUser(user, token) {
-    console.log(user);
     const requestOptions = {
         method: 'PUT',
         headers: {
@@ -122,7 +121,6 @@ async function fetchAPI(url, requestOptions) {
     let result = await fetch(`http://192.168.1.12:3001/api/${url}`, requestOptions);
     // let result = await fetch(`http://localhost:3001/api/${url}`, requestOptions);
     let actualData = await result.json();
-    console.log(actualData);
 
     return actualData;
 };

@@ -1,4 +1,4 @@
-import Table from "../components/Table";
+import Table from "../components/Table.jsx";
 import "../utils/style/EmployeeList.css";
 import { useEffect, useState } from "react";
 import { getEmployees } from "../services/APIService";

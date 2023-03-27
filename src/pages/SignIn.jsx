@@ -1,5 +1,5 @@
 import '../utils/style/SignIn.css';
-import Input from "../components/Input";
+import Input from "../components/Input.jsx";
 import { regexEmail } from '../utils/global/globalRegex';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
@@ -102,7 +102,6 @@ function SignIn() {
 
         try {
             const response = await loginUser(email, password);
-            console.log(response);
 
             if (response && response.token) {
                 dispatch(connectUser(response));

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../utils/style/Header.css';
 import wealthHealthLogo from '../assets/wealth-health-logo_transparent.png';
-import Nav from './Nav';
+import Nav from './Nav.jsx';
 import { useSelector } from 'react-redux';
 
 function Header() {

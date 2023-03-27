@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from '../components/Header';
-import SignIn from './SignIn';
-import CreateEmployee from './CreateEmployee';
-import EmployeeList from './EmployeeList';
-import Error from './Error';
-import Profile from './Profile';
+import Header from '../components/Header.jsx';
+import SignIn from './SignIn.jsx';
+import CreateEmployee from './CreateEmployee.jsx';
+import EmployeeList from './EmployeeList.jsx';
+import Error from './Error.jsx';
+import Profile from './Profile.jsx';
 
 function App() {
   return (
