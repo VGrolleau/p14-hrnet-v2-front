@@ -4,10 +4,12 @@
 
 - [Installation (version française)](#installation-version-française)
     - [Prérequis](#prérequis)
-    - [Installation et lancement du projet](#installation-et-lancement-du-projet)
+    - [Étape 1: installation et lancement du backend](#étape-1--installation-et-lancement-du-backend)
+    - [Étape 2 : installation et lancement du frontend](#étape-2--installation-et-lancement-du-frontend)
 - [Installation (english version)](#installation-english-version)
     - [Prerequisites](#prerequisites)
-    - [Installating and running project](#installating-and-running-project)
+    - [Step 1: installation and launching backend](#step-1--installation-and-lauching-backend)
+    - [Step 2 : installation and launching frontend](#step-2--installation-and-lauching-frontend)
 
 ---
 
@@ -20,7 +22,17 @@
 
 ---
 
-#### Installation et lancement du projet
+### Étape 1 : installation et lancement du backend
+
+Pour fonctionner, l'application nécessite l'API backend.
+
+Pour l'obtenir et l'installer, il faut :
+1. se rendre sur [p14-hrnet-v2-back](https://github.com/VGrolleau/p14-hrnet-v2-back),
+2. suivre les instructions données sur le Readme associé.
+
+---
+
+### Étape 2 : installation et lancement du frontend
 
 Pour installer le projet, il faut :
 1. le forker sur votre compte github,
@@ -32,10 +44,6 @@ Pour installer le projet, il faut :
 Pour consulter le rendu sur votre navigateur, il faut alors aller sur [http://localhost:3000/](http://localhost:3000/).
 
 ---
-
-[Sommaire](#sommaire--summary)
-
----
 ## Installation (*english version*)
 
 ### Prerequisites
@@ -45,17 +53,23 @@ Pour consulter le rendu sur votre navigateur, il faut alors aller sur [http://lo
 
 ---
 
-#### Installating and running project
+### Step 1: installation and launching backend
 
-To install the project, you must:
-1. fork it on your github account,
-2. clone it on your local machine,
-3. install missing packages doing `npm install` (or `npm i`).
+To work, the application requires the backend API.
 
-From there, project can be started with the command `npm start`.
-
-To consult the rendering on your browser, you have to go to [http://localhost:3000/](http://localhost:3000/).
+To obtain and install it, you must:
+1. go to [p14-hrnet-v2-back](https://github.com/VGrolleau/p14-hrnet-v2-back),
+2. follow the instructions given on the associated readme.
 
 ---
 
-[Summary](#sommaire--summary)
+### Step 2: installation and launching frontend
+
+To install the project, you must:
+1. fork it on your github account,
+2. clone it on your machine,
+3. install the missing packages by doing `npm install` (or `npm i`).
+
+From there, the project can be launched via the command `npm start`.
+
+To view the rendering on your browser, you should then go to [http://localhost:3000/](http://localhost:3000/).
