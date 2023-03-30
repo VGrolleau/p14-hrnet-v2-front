@@ -1,4 +1,5 @@
-.create-employee-section {
+.profile-section > div {
+    width: calc(100% - 40px);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -12,32 +13,21 @@ h2 {
     text-transform: capitalize;
 }
 
-.create-employee-section form {
+.profile-section form {
     width: 100%;
-    margin: 20px auto;
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
 }
 
-#nameBloc, #addressBloc, #departmentBloc {
+.buttons {
+    /* width: 80%; */
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-#addressBloc {
-    margin: 15px 0;
-    background-color: rgba(90, 111, 8, .25);
-    border: none;
-    border-radius: 5px;
-}
-
-#addressBloc legend {
-    background-color: rgba(255,255,255,.75);
-    border-radius: 2px;
-    padding-inline: 5px;
-}
-
-#create-button {
+.buttons button {
     width: min-content;
     margin: 30px auto 0;
     padding: 5px 10px;
@@ -49,6 +39,15 @@ h2 {
     font-size: 1em;
 }
 
+#cancel-button {
+    background-color: red;
+}
+
+.buttons button:disabled, #cancel-button:disabled {
+    background-color: grey;
+    cursor: default;
+}
+
 .error-text {
     margin: 0;
     margin-top: 2px;
@@ -56,9 +55,13 @@ h2 {
     font-size: .6em;
 }
 
+.bottom-message {
+    color: green;
+}
+
 /* For devices with width between 769px and 1279px, like landscape tablets and laptops */
 @media only screen and (min-width: 769px) {
-    .create-employee-section {
+    .profile-section {
         padding: 30px 50px;
     }
     h2 {
@@ -72,21 +75,26 @@ h2 {
 
 /* For devices with width of 1280px and more, like desktop computers */
 @media only screen and (min-width: 1280px) {
-    .create-employee-section {
+    .profile-section > div {
         padding: 50px 100px;
     }
-    .create-employee-section form {
+    .profile-section form {
         width: 50%;
         margin: 30px auto;
     }
-    #create-button {
-        margin: 50px auto;
+    .buttons button {
+        width: max-content;
+        margin: 50px;
         font-size: 1em;
         transition: all .2s ease-in-out;
     }
-    #create-button:hover {
+    .buttons button:hover {
         background-color: rgb(147, 173, 24);
         color: black;
         transition: all .2s ease-in-out;
+    }
+    .buttons button:disabled:hover {
+        background-color: grey;
+        color: white;
     }
 }

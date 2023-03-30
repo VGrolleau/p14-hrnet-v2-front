@@ -4,10 +4,20 @@ header, .logo-title {
     flex-direction: column;
 }
 
-header {
+/* header {
     padding: 20px;
     padding-bottom: 0;
+} */
+
+.logo-nav {
     background-color: rgba(90, 111, 8, .25);
+    width: calc(100% - 40px);
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.disconnect {
+    background-color: transparent;
 }
 
 .logo-title img {
@@ -23,7 +33,7 @@ header {
 
 /* For devices with width between 769px and 1279px, like landscape tablets and laptops */
 @media only screen and (min-width: 769px) {
-    header {
+    .logo-nav {
         padding: 20px 50px;
     }
     .logo-title img {
@@ -41,7 +51,12 @@ header {
     }
     header {
         justify-content: space-between;
+    }
+    .logo-nav {
         padding: 20px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .logo-title img {
         width: 100px;
