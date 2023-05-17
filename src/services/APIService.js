@@ -1,6 +1,7 @@
 export function getUserNotCo(userId) {
     const requestOptions = {
         method: 'GET',
+        mode: 'cors',
         headers: { 'Content-Type': 'application/json' }
     };
     return fetchAPI(`user/${userId}`, requestOptions);
