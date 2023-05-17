@@ -13,7 +13,7 @@ function EmployeeList() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!isLogged) navigate("/sites/openclassrooms");
+        if (!isLogged) navigate("/sites/openclassrooms/hrnet");
 
         const getData = async () => {
             try {

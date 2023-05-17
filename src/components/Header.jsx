@@ -12,7 +12,7 @@ function Header() {
             {isLogged
                 ? <div className='logo-nav'>
                     <div className='logo-title'>
-                        <Link to="/sites/openclassrooms/create-employee">
+                        <Link to="/sites/openclassrooms/hrnet/create-employee">
                             <img src={wealthHealthLogo} alt="Wealth Health Logo" />
                         </Link>
                         <h1>HRnet</h1>
@@ -22,7 +22,7 @@ function Header() {
 
                 : <div className='logo-nav disconnect'>
                     <div className='logo-title'>
-                        <Link to="/sites/openclassrooms">
+                        <Link to="/sites/openclassrooms/hrnet">
                             <img src={wealthHealthLogo} alt="Wealth Health Logo" />
                         </Link>
                         <h1>HRnet</h1>

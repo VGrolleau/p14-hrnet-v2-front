@@ -105,7 +105,7 @@ function SignIn() {
 
             if (response && response.token) {
                 dispatch(connectUser(response));
-                navigate('/sites/openclassrooms/create-employee');
+                navigate('/sites/openclassrooms/hrnet/create-employee');
             } else {
                 setErrors((prevErrors) => ({ ...prevErrors, login: response.message }));
                 setShowError(true);
