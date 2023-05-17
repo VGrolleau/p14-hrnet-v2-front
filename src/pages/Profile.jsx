@@ -22,7 +22,7 @@ function Profile() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!isLogged) navigate("/");
+        if (!isLogged) navigate("/sites/openclassrooms");
 
         const getData = async () => {
             try {

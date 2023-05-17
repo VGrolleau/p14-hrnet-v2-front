@@ -12,10 +12,11 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route index element={<SignIn />} />
-          <Route path="/create-employee" element={<CreateEmployee />} />
-          <Route path="/employee-list" element={<EmployeeList />} />
-          <Route path="/profile" element={<Profile />} />
+          {/* <Route index element={<SignIn />} /> */}
+          <Route path='/sites/openclassrooms' element={<SignIn />} />
+          <Route path="/sites/openclassrooms/create-employee" element={<CreateEmployee />} />
+          <Route path="/sites/openclassrooms/employee-list" element={<EmployeeList />} />
+          <Route path="/sites/openclassrooms/profile" element={<Profile />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

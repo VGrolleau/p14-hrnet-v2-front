@@ -20,10 +20,10 @@ function Nav() {
                 <div className="burger burger3"></div>
             </div>
             <div className={hamburgerOpen ? 'navigation open' : 'navigation'}>
-                <NavLink to="/create-employee" className={({ isActive }) => (isActive ? "active" : "")}>Create employee</NavLink>
-                <NavLink to="/employee-list" className={({ isActive }) => (isActive ? "active" : "")}>View current employees</NavLink>
-                <NavLink to="/profile" className={({ isActive }) => (isActive ? "active" : "")}>Profile</NavLink>
-                <NavLink to="/" onClick={() => dispatch(disconnectUser())}>
+                <NavLink to="/sites/openclassrooms/create-employee" className={({ isActive }) => (isActive ? "active" : "")}>Create employee</NavLink>
+                <NavLink to="/sites/openclassrooms/employee-list" className={({ isActive }) => (isActive ? "active" : "")}>View current employees</NavLink>
+                <NavLink to="/sites/openclassrooms/profile" className={({ isActive }) => (isActive ? "active" : "")}>Profile</NavLink>
+                <NavLink to="/sites/openclassrooms" onClick={() => dispatch(disconnectUser())}>
                     <i className="fa fa-sign-out"></i>
                     Sign Out
                 </NavLink>

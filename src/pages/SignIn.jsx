@@ -105,7 +105,7 @@ function SignIn() {
 
             if (response && response.token) {
                 dispatch(connectUser(response));
-                navigate('/create-employee');
+                navigate('/sites/openclassrooms/create-employee');
             } else {
                 setErrors((prevErrors) => ({ ...prevErrors, login: response.message }));
                 setShowError(true);
