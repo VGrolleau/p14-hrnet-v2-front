@@ -31,7 +31,8 @@ function CreateEmployee() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!isLogged) navigate("/sites/openclassrooms/hrnet");
+        // if (!isLogged) navigate("/sites/openclassrooms/hrnet");
+        if (!isLogged) navigate("/");
     })
 
     let dataNameBlock = [];

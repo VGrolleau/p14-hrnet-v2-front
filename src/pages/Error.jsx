@@ -10,7 +10,8 @@ function Error() {
             <p>
                 Oups! La page que vous demandez n’existe pas.
             </p>
-            <Link to='/sites/openclassrooms/hrnet'>Retourner à la page d'accueil</Link>
+            {/* <Link to='/sites/openclassrooms/hrnet'>Retourner à la page d'accueil</Link> */}
+            <Link to='/'>Retourner à la page d'accueil</Link>
         </section>
     )
 }

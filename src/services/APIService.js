@@ -119,8 +119,7 @@ export function updateUser(user, token) {
 };
 
 async function fetchAPI(url, requestOptions) {
-    // let result = await fetch(`http://localhost:3001/api/${url}`, requestOptions);
-    let result = await fetch(`http://localhost:3306/api/${url}`, requestOptions);
+    let result = await fetch(`http://localhost:3001/api/${url}`, requestOptions);
     let actualData = await result.json();
 
     return actualData;

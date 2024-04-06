@@ -13,10 +13,14 @@ function App() {
         <Header />
         <Routes>
           {/* <Route index element={<SignIn />} /> */}
-          <Route path='/sites/openclassrooms/hrnet' element={<SignIn />} />
+          {/* <Route path='/sites/openclassrooms/hrnet' element={<SignIn />} />
           <Route path="/sites/openclassrooms/hrnet/create-employee" element={<CreateEmployee />} />
           <Route path="/sites/openclassrooms/hrnet/employee-list" element={<EmployeeList />} />
-          <Route path="/sites/openclassrooms/hrnet/profile" element={<Profile />} />
+          <Route path="/sites/openclassrooms/hrnet/profile" element={<Profile />} /> */}
+          <Route path='/' element={<SignIn />} />
+          <Route path="/create-employee" element={<CreateEmployee />} />
+          <Route path="/employee-list" element={<EmployeeList />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
